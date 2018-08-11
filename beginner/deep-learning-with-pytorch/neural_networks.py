@@ -34,7 +34,6 @@ class Net(nn.Module):
       num_features *= s
     return num_features
 
-# Instantiate the network
 net = Net()
 print(net)
 
@@ -62,3 +61,15 @@ print(loss)
 print(loss.grad_fn) # MSELoss
 print(loss.grad_fn.next_functions[0][0]) # Linear
 print(loss.grad_fn.next_functions[0][0].next_functions[0][0]) # ReLU
+
+# Backprop
+
+net.zero_grad() # zeroes the gradient buffers of all parameters
+
+print('conv1.bias.grad before backward')
+print(net.conv1.bias.grad)
+
+loss.backward()
+
+print('conv1.bias.grad after backward')
+print(net.conv1.bias.grad)
