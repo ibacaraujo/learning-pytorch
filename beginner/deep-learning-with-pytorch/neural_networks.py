@@ -32,7 +32,6 @@ class Net(nn.Module):
       num_features *= s
     return num_features
 
-# Instantiate the network
 net = Net()
 print(net)
 
