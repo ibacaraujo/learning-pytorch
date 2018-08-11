@@ -2,6 +2,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+# Define the network
+
 class Net(nn.Module):
   def __init__(self):
     super(Net, self).__init__()
@@ -46,3 +48,17 @@ print(out)
 
 net.zero_grad()
 out.backward(torch.randn(1, 10))
+
+# Loss Function
+
+output = net(input)
+target = torch.randn(10) # a dummy target, for example
+target = target.view(1, -1) # make it the same shape as output
+criterion = nn.MSELoss()
+
+loss = criterion(output, target)
+print(loss)
+
+print(loss.grad_fn) # MSELoss
+print(loss.grad_fn.next_functions[0][0]) # Linear
+print(loss.grad_fn.next_functions[0][0].next_functions[0][0]) # ReLU
