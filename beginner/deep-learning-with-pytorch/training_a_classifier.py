@@ -148,3 +148,12 @@ with torch.no_grad():
 for i in range(10):
   print('Accuracy of %5s : %2d %%' % (
       classes[i], 100 * class_correct[i] / class_total[i]))
+
+#  Training on GPU
+
+# first define our device
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
+# Assume that we are on a CUDA machine, then this should print a CUDA device:
+
+print(device)
