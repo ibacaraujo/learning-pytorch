@@ -14,3 +14,15 @@ y = np.random.randn(N, D_out)
 # Randomly initialize weights
 w1 = np.random.randn(D_in, H)
 w2 = np.random.randn(H, D_out)
+
+# Training the network
+learning_rate = 1e-6
+for t in range(500):
+  # Forward pass: compute predicted y
+  h = x.dot(w1)
+  h_relu = np.max(0, h)
+  y_pred = h_relu.dot(w2)
+
+  # Compute and print loss
+  loss = np.square(y_pred - y).sum()
+  print(t, loss)
