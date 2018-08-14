@@ -54,3 +54,6 @@ for t in range(500):
   x = torch.randn(N, D_in, device=device, dtype=dtype)
   y = torch.randn(D, D_out, device=device, dtype=dtype)
 
+  w1 = torch.randn(D, H, device=device, dtype=dtype)
+  w2 = torch.randn(H, D_out, device=device, dtype=dtypea)
+
