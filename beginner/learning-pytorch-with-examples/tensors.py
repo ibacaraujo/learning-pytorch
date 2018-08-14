@@ -39,21 +39,30 @@ for t in range(500):
   w1 -= learning_rate * grad_w1
   w2 -= learning_rate * grad_w2
 
-  # NumPy is great but it cannot utilize GPUs to accelerate its numerical computations.
-  # PyTorch provide the concept of Tensor. It is conceptually identical to NumPy arrays.
-  # But it is goes beyond the concept, with many specific functions to operate on these Tensors.
-  # Besides that, Tensors can utilize GPUs to accelerate their numerical computations.
+# NumPy is great but it cannot utilize GPUs to accelerate its numerical computations.
+# PyTorch provide the concept of Tensor. It is conceptually identical to NumPy arrays.
+# But it is goes beyond the concept, with many specific functions to operate on these Tensors.
+# Besides that, Tensors can utilize GPUs to accelerate their numerical computations.
 
-  import torch
+import torch
 
-  dtype = torch.float
-  device = torch.device("cuda:0")
+dtype = torch.float
+device = torch.device("cuda:0")
 
-  N, D_in, H, D_out = 64, 1000, 100, 10
+N, D_in, H, D_out = 64, 1000, 100, 10
 
-  x = torch.randn(N, D_in, device=device, dtype=dtype)
-  y = torch.randn(D, D_out, device=device, dtype=dtype)
+x = torch.randn(N, D_in, device=device, dtype=dtype)
+y = torch.randn(D, D_out, device=device, dtype=dtype)
 
-  w1 = torch.randn(D, H, device=device, dtype=dtype)
-  w2 = torch.randn(H, D_out, device=device, dtype=dtypea)
+w1 = torch.randn(D, H, device=device, dtype=dtype)
+w2 = torch.randn(H, D_out, device=device, dtype=dtypea)
+
+learning_rate = 1e-6
+for t in range(500):
+  h = x.mm(w1)
+  h_relu = h.clamp(min=0)
+  y_pred = h_relu.mm(w2)
+
+  loss = (y_pred - y).pow(2).sum().item()
+  print(t, loss)
 
