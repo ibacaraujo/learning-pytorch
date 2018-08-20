@@ -14,6 +14,16 @@ w2 = torch.randn(H, D_out, device=device, dtype=dtype, requires_grad=True)
 
 learning_rate = 1e-6
 for t in range(500):
+  # forward pass
   y_pred = x.mm(w1).clamp(min=0).mm(w2)
   loss = (y_pred - y).pow(2).sum()
   print(t, loss.item())
+
+  # backward pass
+  loss.backward()
+  with torch.no_grad():
+    w1 -= learning_rate * w1.grad
+    w2 -= learning_rate * w2.grad
+
+    w1.grad.zero_()
+    w2.grad.zero_()
