@@ -30,3 +30,17 @@ for t in range(500):
   with torch.no_grad():
     for param in model.parameters():
       param -= learning_rate * param.grad
+
+# To use more sophisticated optimizers, we can use the optim package
+optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+for t in range(500):
+  y_pred = model(x)
+
+  loss = loss_fn(y_pred, y)
+  print(t, loss.item())
+
+  optimizer.zero_grad()
+
+  loss.backward()
+
+  optimizer.step()
