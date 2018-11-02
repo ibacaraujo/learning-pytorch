@@ -35,3 +35,8 @@ num_epochs = 15
 # Flag for feature extracting. When False, we finetune the whole model.
 # If True, we finetune only the reshaped layer params
 feature_extract = True
+
+# Helper functions
+
+def train_model(model, dataloaders, criterion, optimizer, num_epochs=25, is_inception=False):
+  pass
