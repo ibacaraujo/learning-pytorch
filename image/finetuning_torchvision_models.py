@@ -39,7 +39,7 @@ feature_extract = True
 # Helper functions
 
 def train_model(model, dataloaders, criterion, optimizer, num_epochs=25, is_inception=False):
-  since = time.time()
+    since = time.time()
 
     val_acc_history = []
 
@@ -110,3 +110,6 @@ def train_model(model, dataloaders, criterion, optimizer, num_epochs=25, is_ince
     # load best model weights
     model.load_state_dict(best_model_wts)
     return model, val_acc_history
+
+def set_parameter_requires_grad(model, feature_extracting):
+    pass
