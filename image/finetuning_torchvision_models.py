@@ -112,4 +112,6 @@ def train_model(model, dataloaders, criterion, optimizer, num_epochs=25, is_ince
     return model, val_acc_history
 
 def set_parameter_requires_grad(model, feature_extracting):
-    pass
+    if feature_extracting:
+        for param in model.parameters():
+            param.requires_grad = False
