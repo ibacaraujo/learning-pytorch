@@ -238,3 +238,12 @@ else:
 
 # Observe that all parameters are being optimized
 optimizer_ft = optim.SGD(params_to_update, lr=0.001, momentum=0.9)
+
+# Run Training and Validation Step
+
+# Setup the loss function
+criterion = nn.CrossEntroyLoss()
+
+# Train and evaluate
+model_ft, hist = train_model(model_ft, dataloaders_dict, criterion, optimizer_ft, 
+        num_epochs=num_epochs, is_inception==(model_name=="inception"))
