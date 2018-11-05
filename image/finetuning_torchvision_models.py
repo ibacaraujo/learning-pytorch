@@ -247,3 +247,13 @@ criterion = nn.CrossEntroyLoss()
 # Train and evaluate
 model_ft, hist = train_model(model_ft, dataloaders_dict, criterion, optimizer_ft, 
         num_epochs=num_epochs, is_inception==(model_name=="inception"))
+
+# Comparison with model trained from scratch
+
+# Initialize the non-pretrained version of the model used for this run
+scratch_model,_ = initialize_model(model_name, num_classes, feature_extract=False, use_pretrained=False)
+scratch_model = scratch_model.to(device)
+scratch_optimizer = optim.SGD(scratch_model.parameters(), lr=0.001, momentum=0.9)
+scratch_criterion = nn.CrossEntropyLoss()
+_,scratch_hist = train_model(scratch_model, dataloaders_dict, scratch_criterion, scratch_optimizer, 
+                             num_epochs=num_epochs, is_inception=(model_name=="inception"))
