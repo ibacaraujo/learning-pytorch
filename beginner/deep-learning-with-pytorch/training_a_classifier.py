@@ -1,3 +1,5 @@
+# Training a Classifier
+
 import torch
 import torchvision
 import torchvision.transforms as transforms
