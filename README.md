@@ -2,7 +2,7 @@
 I am learning PyTorch using the official tutorials.
 
 ## Getting Started  
-- [x] **Deep Learning with PyTorch: A 60 Minute Blitz**  
+- [x] Deep Learning with PyTorch: A 60 Minute Blitz  
 
 ## Image
-- [ ] Finetuning Torchvision Models
+- [x] Finetuning Torchvision Models
