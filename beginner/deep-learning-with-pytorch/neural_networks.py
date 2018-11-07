@@ -34,6 +34,7 @@ class Net(nn.Module):
       num_features *= s
     return num_features
 
+# Instantiate the convolutional neural network
 net = Net()
 print(net)
 
