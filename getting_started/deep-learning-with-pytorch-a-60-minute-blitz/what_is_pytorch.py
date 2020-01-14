@@ -1,5 +1,8 @@
 # What is PyTorch?
 
+# Replacement for NumPy to use the power of GPUs
+# Deep learning research platform
+
 from __future__ import print_function
 import torch
 
