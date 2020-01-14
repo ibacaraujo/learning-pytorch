@@ -20,7 +20,7 @@ class RandomDataset(Dataset):
         self.len = length
         self.data = torch.randn(length, size)
 
-    def get_item(self, index):
+    def __getitem__(self, index):
         return self.data[index]
 
     def __len__(self):
